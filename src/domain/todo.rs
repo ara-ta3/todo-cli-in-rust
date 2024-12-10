@@ -1,31 +1,31 @@
 #[derive(Debug, PartialEq, Clone)]
-pub struct Todo {
+pub struct Task {
     #[allow(dead_code)]
     pub title: String,
 }
 
 #[derive(Debug, PartialEq)]
-pub struct TodoList {
-    pub list: Vec<Todo>,
+pub struct TaskList {
+    pub list: Vec<Task>,
 }
 
-impl TodoList {
-    pub fn add(&mut self, t: Todo) {
+impl TaskList {
+    pub fn add(&mut self, t: Task) {
         self.list.push(t);
     }
 }
 
 #[test]
 fn test_add() {
-    let t1 = Todo {
+    let t1 = Task {
         title: String::from("Hoge"),
     };
-    let t2 = Todo {
+    let t2 = Task {
         title: String::from("Fuga"),
     };
-    let mut l = TodoList {
+    let mut l = TaskList {
         list: vec![t1.clone()],
     };
     l.add(t2.clone());
-    assert_eq!(l, TodoList { list: vec![t1, t2] });
+    assert_eq!(l, TaskList { list: vec![t1, t2] });
 }
