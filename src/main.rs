@@ -1,3 +1,13 @@
+use mytodocli::domain::todo;
+
 fn main() {
-    println!("Hello, world!");
+    let t1 = todo::Todo {
+        title: String::from("Hoge"),
+    };
+    let t2 = todo::Todo {
+        title: String::from("Fuga"),
+    };
+    let mut l = todo::TodoList { list: vec![t1] };
+    l.add(t2);
+    println!("{:?}", l);
 }
