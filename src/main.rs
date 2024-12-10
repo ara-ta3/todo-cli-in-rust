@@ -1,4 +1,8 @@
-use mytodocli::domain::todo;
+pub mod domain {
+    pub mod todo;
+}
+
+use domain::todo;
 
 fn main() {
     let t1 = todo::Todo {
