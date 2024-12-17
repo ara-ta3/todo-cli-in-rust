@@ -1,5 +1,6 @@
 use crate::application::task_repository::TaskRepository;
 use crate::domain::task::TaskList;
+use anyhow::Result;
 
 pub struct TaskRepositoryOnMemory {
     tasks: TaskList,
@@ -12,7 +13,7 @@ impl TaskRepositoryOnMemory {
 }
 
 impl TaskRepository for TaskRepositoryOnMemory {
-    fn fetch_all(&self) -> &TaskList {
-        &self.tasks
+    fn fetch_all(&self) -> Result<&TaskList> {
+        Ok(&self.tasks)
     }
 }

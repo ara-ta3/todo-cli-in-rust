@@ -2,13 +2,14 @@ use crate::application::task_service::TaskService;
 use crate::domain::task::{Task, TaskList};
 use crate::infrastructure::task_repository_impl::TaskRepositoryOnMemory;
 use clap::Parser;
+use anyhow::Result;
 
 #[derive(Parser, Debug)]
 struct Args {
     command: String,
 }
 
-pub fn run() -> Result<(), Box<dyn std::error::Error>> {
+pub fn run() -> Result<()> {
     let repository = TaskRepositoryOnMemory::new(TaskList {
         list: vec![
             Task {

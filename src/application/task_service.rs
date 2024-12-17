@@ -1,6 +1,8 @@
 use crate::application::task_repository::TaskRepository;
 use crate::domain::task::TaskList;
 
+use anyhow::Result;
+
 pub struct TaskService<R: TaskRepository> {
     task_repository: R,
 }
@@ -10,8 +12,8 @@ impl<R: TaskRepository> TaskService<R> {
         Self { task_repository }
     }
 
-    pub fn fetch_all(&self) -> &TaskList {
-        &self.task_repository.fetch_all()
+    pub fn fetch_all(&self) -> Result<&TaskList> {
+        self.task_repository.fetch_all()
     }
 }
 
@@ -45,6 +47,6 @@ mod tests {
                 },
             ],
         };
-        assert_eq!(*actual, expected);
+        assert_eq!(*actual.unwrap(), expected);
     }
 }
